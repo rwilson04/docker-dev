@@ -1,5 +1,8 @@
 #!/bin/bash
 
+useradd -m ${LOCAL_USER}
+usermod -a -G admin ${LOCAL_USER}
+
 if [ "${AUTHORIZED_KEYS}" != "" ]; then
     echo "=> Found authorized keys"
     mkdir -p /home/${LOCAL_USER}/.ssh
