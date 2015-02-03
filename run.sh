@@ -22,4 +22,4 @@ if [ "${AUTHORIZED_KEYS}" != "" ]; then
     done
 fi
 
-exec /usr/sbin/sshd -D
+sh -c '/usr/sbin/sshd -D'
