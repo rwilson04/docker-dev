@@ -1,6 +1,6 @@
 #!/bin/bash
 
-useradd -m ${LOCAL_USER}
+useradd -m ${LOCAL_USER} -s /bin/bash
 usermod -a -G admin ${LOCAL_USER}
 
 if [ "${AUTHORIZED_KEYS}" != "" ]; then
@@ -19,6 +19,7 @@ if [ "${AUTHORIZED_KEYS}" != "" ]; then
             echo "=> Adding public key to /home/${LOCAL_USER}/.ssh/authorized_keys: $x"
             echo "$x" >> /home/${LOCAL_USER}/.ssh/authorized_keys
         fi
+        chown -R ${LOCAL_USER} /home/${LOCAL_USER}/.ssh
     done
 fi
 
